@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, ButtonToolbar } from 'react-bootstrap';
+import { Button, ButtonToolbar, FormControl, Form, Col, Row, Grid } from 'react-bootstrap';
 import './App.css';
 
 class App extends Component {
@@ -20,31 +20,18 @@ class App extends Component {
 class AddItem extends Component {
   render() {
     return (
-      <div>
-        <AddItemInput />
-        <AddItemButton />
-      </div>
-    );
-  }
-}
-
-class AddItemInput extends Component {
-  render() {
-    return (
-      <input>
-      </input>
-    );
-  }
-}
-
-class AddItemButton extends Component {
-  render() {
-    return (
-      <ButtonToolbar>
-        <Button bsStyle="primary">
-          ADD
-        </Button>
-      </ButtonToolbar>
+      <Grid bsClass="container">
+        <Row>
+          <Col md={6} mdOffset={2} xs={8}>
+            <FormControl type="text" placeholder="Enter ToDo Item to Add"/>
+          </Col>
+          <Col md={1} mdOffsetRight={3} xs={4}>
+            <Button bsStyle="primary" className="Add-btn">
+              ADD
+            </Button>
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
