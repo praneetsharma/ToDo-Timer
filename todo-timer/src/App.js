@@ -18,20 +18,62 @@ class App extends Component {
 }
 
 class AddItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      numItems: 0,
+      inputText: ""
+    };
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit() {
+    alert(this.state.inputText);
+    <ToDoItem text={this.state.inputText}/>
+  }
+
+  handleChange(event) {
+    this.setState({inputText: event.target.value});
+  }
+
   render() {
     return (
       <Grid bsClass="container">
-        <Row>
-          <Col md={6} mdOffset={2} xs={8}>
-            <FormControl type="text" placeholder="Enter ToDo Item to Add"/>
-          </Col>
-          <Col md={1} mdOffsetRight={3} xs={4}>
-            <Button bsStyle="primary" className="Add-btn">
-              ADD
-            </Button>
-          </Col>
-        </Row>
+        <Form onSubmit={this.handleSubmit}>
+          <Row>
+            <Col md={6} mdOffset={2} xs={8}>
+              <FormControl type="text" placeholder="Add todo item" onChange={this.handleChange}/>
+            </Col>
+            <Col md={1} xs={4}>
+              <Button bsStyle="primary" className="Add-btn" type="submit">
+                ADD
+              </Button>
+            </Col>
+          </Row>
+        </Form>
       </Grid>
+    );
+  }
+}
+
+class ToDoItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: this.props.text,
+      elapsedTime: 0,
+      isStarted: false,
+      isCompleted: false
+    };
+  }
+  render() {
+    return (
+      <div>
+        Hello
+      <label>{this.state.text}</label>
+      </div>
     );
   }
 }
